@@ -1,8 +1,7 @@
 Si se quiere ejecutar la api en segundo plano se recomienda utilizar la biblioteca pm2
+```bash
 # npm
 npm install -g pm2
-
-```bash
 pm2 startup
 pm2 save --force
 ```
