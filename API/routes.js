@@ -1,10 +1,6 @@
-const express = require("express");
-const cors = require("cors");
+const app = require("./config");
 const dataRoutes = require("./routes/data");
 const collectRoutes = require("./routes/collect");
-
-const app = express();
-app.use(cors());
 
 app.use("/data", dataRoutes);
 app.use("/collect", collectRoutes);
@@ -15,5 +11,3 @@ app.get("/", async (req, res) => {
 });
 
 module.exports = app;
-
-
