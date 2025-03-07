@@ -10,12 +10,18 @@
     <div id="updates"></div>
 
     <script>
-      const ws = new WebSocket("ws://localhost:3001");
+      const ws = new WebSocket("ws://localhost:3001/ws");
+
+      ws.onopen = () => {
+        console.log("Conexión WebSocket establecida");
+      };
+
       ws.onmessage = (event) => {
-        const data = JSON.parse(event.data);
-        if (data.type === "update") {
-          document.getElementById("updates").innerText = data.data;
-        }
+        console.log("Mensaje del servidor:", event.data);
+      };
+
+      ws.onclose = () => {
+        console.log("Conexión WebSocket cerrada");
       };
     </script>
   </body>
