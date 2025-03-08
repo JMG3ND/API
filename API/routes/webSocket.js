@@ -21,6 +21,7 @@ router.ws("/", async (ws, req) => {
       ws.send(JSON.stringify(message));
     }
   };
+  sendMessage(await readCollect(filePath));
 
   const onChange = async (path) => {
     sendMessage(await readCollect(filePath));
