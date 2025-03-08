@@ -23,7 +23,6 @@ router.ws("/", async (ws, req) => {
   };
 
   const onChange = async (path) => {
-    console.log(`Archivo ${path} ha sido modificado.`);
     sendMessage(await readCollect(filePath));
   };
 
