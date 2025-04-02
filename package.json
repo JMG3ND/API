@@ -12,6 +12,7 @@
   "type": "commonjs",
   "description": "",
   "dependencies": {
+    "child_process": "^1.0.2",
     "chokidar": "^4.0.3",
     "cors": "^2.8.5",
     "dbffile": "^1.12.0",
