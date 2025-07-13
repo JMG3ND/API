@@ -5,7 +5,7 @@ const { DBFFile } = require("dbffile");
 router.get("/", async (req, res) => {
   try {
     // Recibimos los seriales mediante el body, un array de seriales
-    const { serials } = req.body;
+    const serials = req.query.serials.split(",");
     if (!Array.isArray(serials))
       throw new Error("No se recibió un array de seriales");
     if (!serials.every((s) => /^\d{7}$/g.test(s)))
