@@ -6,6 +6,7 @@ router.get("/", async (req, res) => {
   try {
     // Recibimos los seriales mediante el body, un array de seriales
     const serials = req.query.serials.split(",");
+    console.log(serials.join("|"));
     if (!Array.isArray(serials))
       throw new Error("No se recibió un array de seriales");
     if (!serials.every((s) => /^\d{7}$/g.test(s)))
@@ -21,12 +22,15 @@ router.get("/", async (req, res) => {
     const ALL2025rows = await ALL2025.readRecords();
     const depthrows = await depth.readRecords();
 
-    const filterALL2025rows = ALL2025rows.filter((row) =>
-      serialsRegExp.test(row.CARTON)
-    );
-    const filterdepthrows = depthrows.filter((row) =>
-      serialsRegExp.test(row.YEARCARTON)
-    );
+    const filterALL2025rows = ALL2025rows.filter((row) => {
+      serialsRegExp.lastIndex = 0;
+      return serialsRegExp.test(row.CARTON);
+    });
+
+    const filterdepthrows = depthrows.filter((row) => {
+      serialsRegExp.lastIndex = 0;
+      return serialsRegExp.test(row.YEARCARTON);
+    });
 
     const newDepth = filterdepthrows.map((row) => {
       const [YEAR] = row.YEARCARTON.split(serialsRegExp);
