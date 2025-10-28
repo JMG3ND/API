@@ -3,10 +3,12 @@ const dataRoutes = require("./routes/data");
 const collectRoutes = require("./routes/collect");
 const WebSocket = require("./routes/webSocket");
 const restartStation = require("./routes/restartStation");
+const printDimo = require("./routes/printDimo");
 
 app.use("/data", dataRoutes);
 app.use("/collect", collectRoutes);
 app.use("/restartStation", restartStation);
+app.use("/printDimo", printDimo);
 
 // Ruta WebSocket
 app.use("/ws", WebSocket);
