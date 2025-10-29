@@ -27,7 +27,7 @@ async function printHTML() {
     await browser.close();
     
     // Imprimir directamente
-    await ptp.print(pdfPath);
+    await ptp.print(pdfPath, { printer: 'EPSONA43947 (WF-C5710 Series)' });
     console.log('Documento enviado a impresora');
 }
 
