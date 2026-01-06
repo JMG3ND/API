@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
     // Creamos una expresión regular para filtrar los datos
     const serialsRegExp = new RegExp(serials.join("|"), "g");
 
-    const ALL2025 = await DBFFile.open("C:/Simbat/ALL2025.DBF");
+    const ALL2025 = await DBFFile.open("C:/Simbat/ALL2026.DBF");
     const depth = await DBFFile.open("C:/Simbat/depth.DBF");
 
     // Leemos los archivos de las tablas
